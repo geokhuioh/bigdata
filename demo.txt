@@ -1,0 +1,67 @@
+
+------------------------------------
+Initialize Environment
+------------------------------------
+
+source /home/ubuntu/Projects/bigdata/env.sh
+
+------------------------------------
+Cluster Start Up
+------------------------------------
+
+/home/ubuntu/Projects/bigdata/start-cluster.sh
+
+
+-------------------------------------
+Create HBase table
+-------------------------------------
+
+/home/ubuntu/Projects/bigdata/hbase-create-table.sh
+
+-------------------------------------
+Create Kafka topic
+-------------------------------------
+
+/home/ubuntu/Projects/bigdata/kafka-create-topic.sh
+
+
+--------------------------------------
+Drop HBase table
+--------------------------------------
+
+/home/ubuntu/Projects/bigdata/hbase-drop-table.sh
+
+
+--------------------------------------
+Delete Kafka topic
+--------------------------------------
+
+/home/ubuntu/Projects/bigdata/kafka-delete-topic.sh
+
+
+
+
+/opt/apache/hbase/bin/hbase shell
+
+HBase Shell
+-----------------------------
+>> describe 'bigdata'
+
+>> scan 'bigdata', LIMIT => 10
+
+>> quit()
+
+Kafka Topic
+------------------------------
+
+/opt/apache/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --topic 'click-events' --describe
+
+/opt/apache/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic 'click-events' --from-beginning
+
+
+------------------------------
+Stop Cluster
+-------------------------------
+/home/ubuntu/Projects/bigdata/stop-cluster.sh
+
+http://localhost:4040/streaming/

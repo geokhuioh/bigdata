@@ -1,0 +1,3 @@
+disable 'bigdata'
+drop 'bigdata'
+exit

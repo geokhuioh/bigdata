@@ -1,0 +1,8 @@
+LOAD CSV WITH HEADERS FROM "file:///file_1.csv" AS row
+ MERGE (i:Item {itemId: row.item_id})
+ MERGE (c:City {name: row.city})
+ MERGE (i)-[:LOCATE_IN]->(c)
+ WITH split(row.properties, "|") As features
+ UNWIND features AS feature
+ MERGE (f:Feature {name: feature})
+ MERGE (i)-[:HAS_FEATURE]->(f)
